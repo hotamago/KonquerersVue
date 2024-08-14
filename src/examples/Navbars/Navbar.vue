@@ -1,30 +1,11 @@
 <script setup>
-import { computed } from "vue";
 import { useRoute } from "vue-router";
-import { useStore } from "vuex";
-
-const store = useStore();
 
 const getRoute = () => {
   const route = useRoute();
   const routeArr = route.path.split("/");
   return routeArr[1];
-};
-
-const ListItemSideNav = [
-  {
-    to: "/home",
-    text: "Home",
-  },
-  {
-    to: "/trade-nft",
-    text: "Marketplace",
-  },
-  {
-    to: "/about",
-    text: "About",
-  },
-];
+}
 </script>
 <script>
 import { WalletMultiButton } from "solana-wallets-vue";
@@ -42,6 +23,20 @@ export default {
     return {
       navCollapse: false,
       windowWidth: window.innerWidth,
+      ListItemSideNav: [
+        {
+          to: "/home",
+          text: "Home",
+        },
+        {
+          to: "/trade-nft",
+          text: "Marketplace",
+        },
+        {
+          to: "/about",
+          text: "About",
+        },
+      ],
     };
   },
   methods: {
@@ -71,7 +66,7 @@ export default {
             <i class="bi bi-list"></i>
           </button>
         </div>
-        <ul class="navbar-nav d-flex justify-content-between col-lg-5 col-md-7 col-12" v-if="this.navCollapseValue">
+        <ul class="navbar-nav d-flex justify-content-between col-lg-5 col-md-7 col-12" v-if="navCollapseValue">
           <li class="nav-item d-flex justify-content-center align-items-center" v-for="item in ListItemSideNav"
             :key="item.to">
             <router-link :to="item.to" class="nav-link ko-navlink"
@@ -88,7 +83,7 @@ export default {
             </router-link>
           </li>
         </ul>
-        <div class="navbar-left" v-if="this.navCollapseValue">
+        <div class="navbar-left" v-if="navCollapseValue">
           <wallet-multi-button @disconnect="onDisconnect"></wallet-multi-button>
         </div>
       </div>
