@@ -1,6 +1,6 @@
 <script>
 import ArgonButton from "@/components/ArgonButton.vue";
-import ArgonSwitch from "@/components/ArgonSwitch.vue";
+// import ArgonSwitch from "@/components/ArgonSwitch.vue";
 import ArgonInput from "@/components/ArgonInput.vue";
 import { web3, BN } from "@project-serum/anchor";
 import solanaConstant from "@/constant/solana";
@@ -8,7 +8,7 @@ import solanaConstant from "@/constant/solana";
 export default {
   components: {
     ArgonButton,
-    ArgonSwitch,
+    // ArgonSwitch,
     ArgonInput,
   },
   data() {
@@ -93,6 +93,7 @@ export default {
           message: "NFT edited successfully",
           type: "success",
         });
+        this.$loading.hide();
         this.getNFTs();
         this.edit_modal.show = false;
       } catch (error) {
@@ -183,7 +184,14 @@ export default {
                 </div>
                 <div class="form-group mb-3">
                   <label for="is_hidden">Is Hidden</label>
-                  <ArgonSwitch id="is_hidden" v-model="edit_nft.info_short.states.is_hidden" />
+                  <div class="form-check form-switch ps-0">
+                    <input
+                      id="is_hidden"
+                      class="form-check-input ms-0"
+                      type="checkbox"
+                      v-model="edit_nft.info_short.states.is_hidden"
+                    />
+                  </div>
                 </div>
                 <div class="text-center">
                   <argon-button class="mt-4 me-2" variant="gradient" color="success" size="lg">Confirm</argon-button>

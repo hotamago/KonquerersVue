@@ -269,7 +269,7 @@ export default {
               <div class="row mt-2">
                 <div class="col-lg-6 col-12">
                   <argon-button class="ko-button-buy mx-2 w-100" variant="gradient" color="white" size="md"
-                    @click="buyItem(index)" type="button">
+                    @click="buyItem(view_nft.index)" type="button">
                     <div class="ko-show w-100">
                       <span class="me-2">{{ view_nft.onchain.price / web3.LAMPORTS_PER_SOL }}</span>
                       <img :src="require('@/assets/img/solana-sol-logo.png')" alt="coin" class="icon" />
@@ -301,7 +301,7 @@ export default {
           <div class="row text-dark">
             <div class="col-lg-6 col-12">
               <p><span style="font-weight: 700;">Name: </span>{{ view_nft.owner.info.name }}</p>
-              <p><span style="font-weight: 700;">Phone number: </span>{{ view_nft.owner.info.phone_number }}</p>
+              <!-- <p><span style="font-weight: 700;">Phone number: </span>{{ view_nft.owner.info.phone_number }}</p> -->
               <p><span style="font-weight: 700;">Address: </span>{{ view_nft.owner.info.address }}</p>
               <p><span style="font-weight: 700;">Bio: </span>{{ view_nft.owner.info.bio }}</p>
             </div>
